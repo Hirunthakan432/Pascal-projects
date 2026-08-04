@@ -1,14 +1,23 @@
 # Modules (Units) in Pascal
 
-This folder demonstrates Pascal **units** (modules).
+Each subfolder contains one reusable **unit** and a small **demo program** that uses it.
 
-In Free Pascal / Delphi a unit is a reusable module that can contain:
-- constants
-- types
-- variables
-- procedures and functions
+```
+modules/
+  mathutils/      - basic arithmetic helpers
+  stringutils/    - string operations
+  arrayutils/     - array helpers + sort
+  dateutils/      - date validation & day-of-year
+  stackunit/      - stack data structure
+  queueunit/      - circular queue
+  geometry/       - 2D geometry formulas
+  fileutils/      - simple text-file helpers
+  statistics/     - mean, variance, median
+  conversion/     - unit conversions
+  complex/        - complex number arithmetic
+```
 
-A typical unit looks like:
+## How units work
 
 ```pascal
 unit MyUnit;
@@ -17,22 +26,26 @@ interface
   // public declarations
 
 implementation
-  // private code and implementations
+  // private code
 
 end.
 ```
 
-Programs use units with the `uses` clause.
+A program imports a unit with:
 
-## How to compile
-
-```bash
-# Compile a unit (produces .ppu / .o)
-fpc mathutils.pas
-
-# Then compile a program that uses it
-fpc demo_math.pas
-./demo_math
+```pascal
+uses MyUnit;
 ```
 
-Most examples here are self-contained (unit + small demo in the same file) or paired.
+## Compilation
+
+From inside a module folder (example):
+
+```bash
+cd modules/mathutils
+fpc mathutils.pas          # compile the unit
+fpc demo_mathutils.pas     # compile the demo
+./demo_mathutils
+```
+
+Or from the repo root, giving the path to the unit so the compiler finds it.

@@ -1,20 +1,20 @@
 # Modules (Units) in Pascal
 
-Each subfolder contains one reusable **unit** and a small **demo program** that uses it.
+Each subfolder is a self-contained topic with a core **unit** plus multiple **demo** and helper programs (~10 files each).
 
 ```
 modules/
-  mathutils/      - basic arithmetic helpers
-  stringutils/    - string operations
-  arrayutils/     - array helpers + sort
-  dateutils/      - date validation & day-of-year
-  stackunit/      - stack data structure
-  queueunit/      - circular queue
-  geometry/       - 2D geometry formulas
-  fileutils/      - simple text-file helpers
-  statistics/     - mean, variance, median
-  conversion/     - unit conversions
-  complex/        - complex number arithmetic
+  mathutils/      - arithmetic, power, factorial, GCD, primes
+  stringutils/    - reverse, palindrome, trim, word count, replace
+  arrayutils/     - fill, sort, search, reverse
+  dateutils/      - leap year, validation, day-of-year, age
+  stackunit/      - stack ops, parentheses, two-stacks
+  queueunit/      - circular queue, priority queue, deque
+  geometry/       - circle, rectangle, triangle, sphere, Heron
+  fileutils/      - write, read, copy, append
+  statistics/     - mean, variance, median, mode, range
+  conversion/     - temp, length, weight, speed, area
+  complex/        - add, mul, div, conjugate, powers of i
 ```
 
 ## How units work
@@ -39,13 +39,13 @@ uses MyUnit;
 
 ## Compilation
 
-From inside a module folder (example):
+From inside a module folder:
 
 ```bash
 cd modules/mathutils
-fpc mathutils.pas          # compile the unit
-fpc demo_mathutils.pas     # compile the demo
+fpc mathutils.pas
+fpc demo_mathutils.pas
 ./demo_mathutils
 ```
 
-Or from the repo root, giving the path to the unit so the compiler finds it.
+Compile any extra units the demo depends on first (e.g. `gcd_helper.pas` before `demo_gcd.pas`).
